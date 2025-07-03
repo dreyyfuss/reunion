@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home - Event Registration{% endblock %}
+
+{% block javascript %}
+    <script src="{% static 'js/home.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+    <section class="banner-section">
+        <div class="banner-content">
+            <h1>November Online Reunion Party</h1>
+            <p>Join us for a time of celebration, reminiscences, gratitude and connections.</p>
+            <a href="{% url 'registration' %}" class="btn">Register Now</a>
+        </div>
+    </section>
+
+    <section class="countdown-section">
+        <h2>Event Starts In:</h2>
+        <div class="countdown-container">
+            <div class="countdown-box">
+                <span id="days">00</span>
+                <p>Days</p>
+            </div>
+            <div class="countdown-box">
+                <span id="hours">00</span>
+                <p>Hours</p>
+            </div>
+            <div class="countdown-box">
+                <span id="minutes">00</span>
+                <p>Minutes</p>
+            </div>
+            <div class="countdown-box">
+                <span id="seconds">00</span>
+                <p>Seconds</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="banner-section secondary-banner">
+        <div class="banner-content">
+            <h2>It's Raining Gifts!</h2>
+            <p>Enter your Wish List Items. Please know that the value of gifts should not exceed GBP20, USD30, CAD40 or NGN50k in the respective currency.</p>
+            <a href="{% url 'registration' %}" class="btn">Register Now</a>
+        </div>
+    </section>
+{% endblock %}
