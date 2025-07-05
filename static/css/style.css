@@ -507,3 +507,46 @@ footer {
         font-size: 0.8rem;
     }
 }
+
+
+/* Message Styling */
+.message {
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 4px;
+    font-weight: 500;
+    position: relative;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Specific message types */
+.message.success {
+    background-color: #f0fff4;
+    color: #2f855a;
+    border-left: 4px solid #38a169;
+}
+
+.message.error {
+    background-color: #fff5f5;
+    color: #c53030;
+    border-left: 4px solid #e53e3e;
+}
+
+.message.info {
+    background-color: #ebf8ff;
+    color: #2b6cb0;
+    border-left: 4px solid #3182ce;
+}
+
+.message.warning {
+    background-color: #fffaf0;
+    color: #c05621;
+    border-left: 4px solid #dd6b20;
+}
+
+.message.debug {
+    background-color: #f7fafc;
+    color: #4a5568;
+    border-left: 4px solid #718096;
+    font-family: monospace;
+}

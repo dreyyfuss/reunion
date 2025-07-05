@@ -16,14 +16,15 @@
             </div>
             <ul class="nav-links">
                 <li><a href="{% url 'home' %}">Home</a></li>
-                <li><a href="{% url 'registration' %}">Register</a></li>
+
                 <li><a href="{% url 'gallery' %}">Gallery</a></li>
-                {% comment %} {% if user.is_authenticated %}
-                    <li><a href="{% url 'profile' %}">Profile</a></li>
+                {% if user.is_authenticated %}
+                    {% comment %} <li><a href="{% url 'upload' %}">Upload</a></li> {% endcomment %}
                     <li><a href="{% url 'logout' %}">Logout</a></li>
                 {% else %}
+                    <li><a href="{% url 'registration' %}">Register</a></li>
                     <li><a href="{% url 'login' %}">Login</a></li>
-                {% endif %} {% endcomment %}
+                {% endif %}
             </ul>
             <div class="burger">
                 <div class="line1"></div>
@@ -34,8 +35,16 @@
     </header>
 
     <main>
+
+        {% for message in messages %}
+            <div class="message {{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+
         {% block content %}
         {% endblock %}
+
     </main>
 
     <footer>
