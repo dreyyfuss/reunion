@@ -1,24 +1,52 @@
 {% extends 'base.html' %}
-{% block title %}Gallery{% endblock %}
+{% load static %}
+
+{% block title %}Event Gallery{% endblock %}
 
 {% block content %}
 <section class="gallery-section">
-    <h2>Event Gallery</h2>
-    <p>Browse through uploaded photos</p>
+    <div class="gallery-header">
+        <h2 class="gallery-title">Event Gallery</h2>
+        <p class="gallery-subtitle">Relive the memories through our shared photos</p>
+        {% if user.is_authenticated %}
+            <a href="{% url 'upload_photo' %}" class="upload-btn">Upload Photo</a>
+        {% endif %}
+    </div>
 
     <div class="photo-grid">
         {% for photo in photos %}
         <div class="photo-card">
-            <a href="{% url 'photo_detail' photo.id %}">
-                <img src="{{ photo.image.url }}" alt="Photo {{ photo.id }}" />
-                {% if photo.caption %}
-                    <p>{{ photo.caption|truncatechars:100 }}</p>
-                {% endif %}
-                <p><em>Uploaded by {{ photo.user.email }} on {{ photo.uploaded_at|date:"M d, Y" }}</em></p>
+            <a href="{% url 'photo_detail' photo.id %}" class="photo-link">
+                <div class="photo-thumbnail">
+                    <img src="{{ photo.image.url }}" alt="{% if photo.caption %}{{ photo.caption }}{% else %}Event photo{% endif %}" loading="lazy" />
+                    {% comment %} <div class="photo-overlay">
+                        {% if photo.caption %}
+                            <p class="photo-caption">{{ photo.caption|truncatechars:60 }}</p>
+                        {% endif %}
+                    </div> {% endcomment %}
+                </div>
+                {% comment %} <div class="photo-meta">
+                    <span class="upload-info">
+                        {% if photo.user %}
+                            Uploaded by {{ photo.user.full_name|default:photo.user.email }}
+                        {% endif %}
+                        <br>
+                        <small>{{ photo.uploaded_at|date:"M d, Y" }}</small>
+                    </span>
+                    <span class="comment-count">
+                        <i class="fas fa-comment"></i> {{ photo.comments.count }}
+                    </span>
+                </div> {% endcomment %}
             </a>
         </div>
         {% empty %}
-        <p>No photos uploaded yet.</p>
+        <div class="empty-gallery">
+            <img src="{% static 'images/no-photos.svg' %}" alt="No photos yet" class="empty-icon">
+            <p>No photos uploaded yet.</p>
+            {% if user.is_authenticated %}
+                <a href="{% url 'upload_photo' %}" class="upload-btn">Be the first to upload!</a>
+            {% endif %}
+        </div>
         {% endfor %}
     </div>
 </section>

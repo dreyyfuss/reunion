@@ -1,22 +1,22 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}{{ photo.title }} - Photo Details{% endblock %}
+{% block title %}{{ photo.caption|truncatechars:20 }} - Photo Details{% endblock %}
 
 {% block content %}
     <section class="photo-detail-section">
         <div class="photo-container">
-            <h2>{{ photo.title }}</h2>
-            {% if photo.photo_author %}
-                <span class="photo-author">By {{ photo.photo_author }}</span>
+            {% comment %} <h2>{{ photo.caption }}</h2> {% endcomment %}
+            {% if photo.user %}
+                <span class="photo-author">Uploaded by {{ photo.user.full_name|default:photo.user.email }}</span>
             {% endif %}
             
             <div class="photo-display">
-                <img src="{{ photo.image.url }}" alt="{{ photo.title }}" class="main-photo">
+                <img src="{{ photo.image.url }}" alt="{{ photo.caption }}" class="main-photo">
             </div>
             
-            {% if photo.description %}
-                <p class="photo-description">{{ photo.description }}</p>
+            {% if photo.caption %}
+                <p class="photo-description">{{ photo.caption }}</p>
             {% endif %}
             
             <p class="upload-date">Uploaded on {{ photo.uploaded_at|date:"F j, Y" }}</p>
@@ -42,7 +42,7 @@
                             <div class="comment-header">
                                 <span class="comment-author">
                                     {% if comment.user %}
-                                        {{ comment.user.email }}
+                                        {{ comment.user.full_name|default:comment.user.email }}
                                     {% else %}
                                         Anonymous User
                                     {% endif %}
