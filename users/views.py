@@ -12,7 +12,7 @@ def login_view(request):
         if user is not None:
             if user.is_active:
                 login(request, user)
-                messages.success(request, f"Welcome back, {user.email}!")
+                messages.success(request, f"Welcome back, {user.first_name}!")
                 return redirect("gallery")
             else:
                 messages.error(request, "Please verify your email before logging in.")
