@@ -1,60 +1,53 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Gallery - Event Registration{% endblock %}
-
-{% block javascript %}
-    <script src="{% static 'js/gallery.js' %}"></script>
-{% endblock %}
+{% block title %}Event Gallery{% endblock %}
 
 {% block content %}
-    <section class="gallery-section">
-        <div class="gallery-header">
-            <h2>Event Gallery</h2>
-            <p>Browse through photos from our previous events</p>
-            <button id="upload-toggle" class="upload-btn">Upload Photo</button>
-        </div>
+<section class="gallery-section">
+    <div class="gallery-header">
+        <h2 class="gallery-title">Event Gallery</h2>
+        <p class="gallery-subtitle">Relive the memories through our shared photos</p>
+        {% if user.is_authenticated %}
+            <a href="{% url 'upload_photo' %}" class="upload-btn">Upload Photo</a>
+        {% endif %}
+    </div>
 
-        <div id="upload-form-container" class="upload-form-container" style="display: none;">
-            <form method="post" enctype="multipart/form-data" class="upload-form">
-                {% csrf_token %}
-                <div class="form-group">
-                    <label for="title">Photo Title</label>
-                    <input type="text" id="title" name="title" required>
-                </div>
-                <div class="form-group">
-                    <label for="image">Select Image</label>
-                    <input type="file" id="image" name="image" accept="image/*" required>
-                </div>
-                <div class="form-group">
-                    <label for="photo_author">Your Name (Optional)</label>
-                    <input type="text" id="photo_author" name="photo_author">
-                </div>
-                <div class="form-group">
-                    <label for="description">Description (Optional)</label>
-                    <textarea id="description" name="description" rows="3"></textarea>
-                </div>
-                <button type="submit" class="submit-btn">Upload Photo</button>
-            </form>
-        </div>
-
-        <div class="photo-grid">
-            {% for photo in photos %}
-            <div class="photo-card">
-                <a href="{% url 'photo_detail' photo.id %}">
-                    <img src="{{ photo.image.url }}" alt="{{ photo.title }}">
-                    <div class="photo-info">
-                        <h3>{{ photo.title }}</h3>
-                        {% if photo.photo_author %}
-                        <p class="author">By {{ photo.photo_author }}</p>
+    <div class="photo-grid">
+        {% for photo in photos %}
+        <div class="photo-card">
+            <a href="{% url 'photo_detail' photo.id %}" class="photo-link">
+                <div class="photo-thumbnail">
+                    <img src="{{ photo.image.url }}" alt="{% if photo.caption %}{{ photo.caption }}{% else %}Event photo{% endif %}" loading="lazy" />
+                    {% comment %} <div class="photo-overlay">
+                        {% if photo.caption %}
+                            <p class="photo-caption">{{ photo.caption|truncatechars:60 }}</p>
                         {% endif %}
-                        {% if photo.description %}
-                        <p class="description">{{ photo.description|truncatechars:100 }}</p>
+                    </div> {% endcomment %}
+                </div>
+                {% comment %} <div class="photo-meta">
+                    <span class="upload-info">
+                        {% if photo.user %}
+                            Uploaded by {{ photo.user.full_name|default:photo.user.email }}
                         {% endif %}
-                    </div>
-                </a>
-            </div>
-            {% endfor %}
+                        <br>
+                        <small>{{ photo.uploaded_at|date:"M d, Y" }}</small>
+                    </span>
+                    <span class="comment-count">
+                        <i class="fas fa-comment"></i> {{ photo.comments.count }}
+                    </span>
+                </div> {% endcomment %}
+            </a>
         </div>
-    </section>
+        {% empty %}
+        <div class="empty-gallery">
+            <img src="{% static 'images/no-photos.svg' %}" alt="No photos yet" class="empty-icon">
+            <p>No photos uploaded yet.</p>
+            {% if user.is_authenticated %}
+                <a href="{% url 'upload_photo' %}" class="upload-btn">Be the first to upload!</a>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+</section>
 {% endblock %}

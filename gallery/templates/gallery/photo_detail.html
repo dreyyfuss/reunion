@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ photo.caption|truncatechars:20 }} - Photo Details{% endblock %}
+
+{% block content %}
+    <section class="photo-detail-section">
+        <div class="photo-container">
+            {% comment %} <h2>{{ photo.caption }}</h2> {% endcomment %}
+            {% if photo.user %}
+                <span class="photo-author">Uploaded by {{ photo.user.full_name|default:photo.user.email }}</span>
+            {% endif %}
+            
+            <div class="photo-display">
+                <img src="{{ photo.image.url }}" alt="{{ photo.caption }}" class="main-photo">
+            </div>
+            
+            {% if photo.caption %}
+                <p class="photo-description">{{ photo.caption }}</p>
+            {% endif %}
+            
+            <p class="upload-date">Uploaded on {{ photo.uploaded_at|date:"F j, Y" }}</p>
+        </div>
+
+        <div class="comment-section">
+            <h3>Leave a Comment</h3>
+            <form method="post" class="comment-form">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="text">Your Comment</label>
+                    <textarea id="text" name="text" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Post Comment</button>
+            </form>
+
+            <div class="comments-list">
+                <h3>Comments ({{ photo.comments.count }})</h3>
+                
+                {% if photo.comments.all %}
+                    {% for comment in photo.comments.all %}
+                        <div class="comment">
+                            <div class="comment-header">
+                                <span class="comment-author">
+                                    {% if comment.user %}
+                                        {{ comment.user.full_name|default:comment.user.email }}
+                                    {% else %}
+                                        Anonymous User
+                                    {% endif %}
+                                </span>
+                                <span class="comment-date">{{ comment.created_at|date:"F j, Y" }}</span>
+                            </div>
+                            <p class="comment-text">{{ comment.text }}</p>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p class="no-comments">No comments yet. Be the first to comment!</p>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

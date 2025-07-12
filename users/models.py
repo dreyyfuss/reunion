@@ -42,3 +42,42 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.email
+
+    @property
+    def full_name(self):
+        """
+        Returns the user's full name from their registration if it exists,
+        otherwise returns None.
+        """
+        try:
+            if hasattr(self, 'registration'):
+                return f"{self.registration.first_name} {self.registration.last_name}"
+            return None
+        except Exception:
+            return None
+
+    @property
+    def first_name(self):
+        """
+        Returns the user's first name from their registration if it exists,
+        otherwise returns None.
+        """
+        try:
+            if hasattr(self, 'registration'):
+                return self.registration.first_name
+            return None
+        except Exception:
+            return None
+
+    @property
+    def last_name(self):
+        """
+        Returns the user's last name from their registration if it exists,
+        otherwise returns None.
+        """
+        try:
+            if hasattr(self, 'registration'):
+                return self.registration.last_name
+            return None
+        except Exception:
+            return None

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Upload Photo - Gallery{% endblock %}
+
+{% block content %}
+<section class="upload-section">
+    <div class="upload-container">
+        <h2>Upload a Photo</h2>
+        <p class="subtitle">Share your memories with the community</p>
+        
+        {% if messages %}
+            {% for message in messages %}
+                <p class="message {{ message.tags }}">{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+
+        <form method="post" enctype="multipart/form-data" class="upload-form">
+            {% csrf_token %}
+            
+            <div class="form-group">
+                <label for="image">Select Image *</label>
+                <input type="file" id="image" name="image" accept="image/*" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="caption">Caption (Optional)</label>
+                <textarea id="caption" name="caption" rows="3"></textarea>
+            </div>
+            
+            <div class="form-group">
+                <button type="submit" class="submit-btn">Upload Photo</button>
+                <a href="{% url 'gallery' %}" class="cancel-btn">Cancel</a>
+            </div>
+        </form>
+    </div>
+</section>
+{% endblock %}
