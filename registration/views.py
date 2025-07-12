@@ -86,6 +86,7 @@ def verify_email(request, uidb64, token):
         user.is_active = True
         user.save()
         # Redirect to success page or login
+        messages.success(request, "Email verified successfully.")
         return redirect("login")
     else:
         return HttpResponse("Email verification failed")
