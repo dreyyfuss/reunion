@@ -37,8 +37,9 @@
     <main>
 
         {% for message in messages %}
-            <div class="message {{ message.tags }}">
-                {{ message }}
+            <div class="custom-alert custom-alert-{{ message.tags }}">
+                <span class="custom-alert-message">{{ message }}</span>
+                <button class="custom-alert-close">&times;</button>
             </div>
         {% endfor %}
 
@@ -53,6 +54,8 @@
 
     <!-- Common JS -->
     <script src="{% static 'js/common.js' %}"></script>
+
+    <script src="{% static 'js/messages.js' %}"></script>
     
     <!-- Page-specific JS -->
     {% block javascript %}

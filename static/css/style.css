@@ -120,6 +120,7 @@ nav {
 
 .banner-section.secondary-banner {
     background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../images/gift_bg.png');
+    margin-bottom: 0;
 }
 
 .banner-content h1 {
@@ -752,4 +753,70 @@ footer {
 .comment-anonymous {
     font-style: italic;
     color: var(--dark-gray);
+}
+
+/* Custom Alert Messages */
+.custom-alert {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 20px;
+    border-radius: 5px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 300px;
+    max-width: 400px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    opacity: 0;
+    transform: translateY(-100%);
+    transition: all 0.3s ease;
+}
+
+.custom-alert.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.custom-alert-message {
+    flex-grow: 1;
+    padding-right: 15px;
+}
+
+.custom-alert-close {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0 0 0 10px;
+}
+
+/* Alert Types */
+.custom-alert-success {
+    background-color: #38a169;
+    border-left: 4px solid #2f855a;
+}
+
+.custom-alert-error {
+    background-color: #e53e3e;
+    border-left: 4px solid #c53030;
+}
+
+.custom-alert-warning {
+    background-color: #dd6b20;
+    border-left: 4px solid #c05621;
+}
+
+.custom-alert-info {
+    background-color: #3182ce;
+    border-left: 4px solid #2b6cb0;
+}
+
+.custom-alert-debug {
+    background-color: #718096;
+    border-left: 4px solid #4a5568;
 }
