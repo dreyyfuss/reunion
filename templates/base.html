@@ -26,7 +26,7 @@
             <ul class="nav-links">
                 <li><a href="{% url 'home' %}">Home</a></li>
                 <li><a href="{% url 'quiz' %}">Quiz</a></li>
-                <li><a href="{% url 'gallery' %}">Gallery</a></li>
+                <li><a href="{% url 'gallery' %}">Memories</a></li>
                 {% if user.is_authenticated %}
                     <li><a href="{% url 'upload_photo' %}">Upload</a></li>
                     <li><a href="{% url 'logout' %}">Logout</a></li>
