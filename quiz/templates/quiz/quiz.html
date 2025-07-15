@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}SITP Reunion Quiz{% endblock %}
+
+{% block javascript %}
+    <script src="{% static 'js/quiz.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+    <section class="quiz-section">
+        <div class="quiz-container">
+            <div class="timer" id="timer">10</div>
+            <div class="progress-bar">
+                <div class="progress" id="progress"></div>
+            </div>
+            <h2 id="question">Question text</h2>
+            <div id="options"></div>
+            <button id="next-btn">Next</button>
+            <div id="result" class="result"></div>
+        </div>
+    </section>
+{% endblock %}
