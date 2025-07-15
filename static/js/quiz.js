@@ -83,122 +83,129 @@ document.addEventListener('DOMContentLoaded', function() {
         }      
     ];
 
-    // Shuffle questions
-    const shuffledQuiz = quiz.sort(() => Math.random() - 0.5);
+    // DOM elements
+    const startScreen = document.getElementById('start-screen');
+    const quizContainer = document.getElementById('quiz-container');
+    const startBtn = document.getElementById('start-btn');
+    const questionEl = document.getElementById('question');
+    const optionsEl = document.getElementById('options');
+    const nextBtn = document.getElementById('next-btn');
+    const resultEl = document.getElementById('result');
+    const timerEl = document.getElementById('timer');
+    const progressEl = document.getElementById('progress');
 
+    // Quiz state
     let currentQuestion = 0;
     let score = 0;
     let timer;
-    let timeLeft = 10; // seconds per question
+    let timeLeft = 10;
+    const shuffledQuiz = quiz.sort(() => Math.random() - 0.5);
 
-    const questionEl = document.getElementById("question");
-    const optionsEl = document.getElementById("options");
-    const nextBtn = document.getElementById("next-btn");
-    const resultEl = document.getElementById("result");
-    const timerEl = document.getElementById("timer");
-    const progressEl = document.getElementById("progress");
+    // Start quiz when button is clicked
+    startBtn.addEventListener('click', () => {
+        startScreen.style.display = 'none';
+        quizContainer.style.display = 'block';
+        loadQuestion();
+    });
 
     function loadQuestion() {
-    resetTimer();
-    const q = shuffledQuiz[currentQuestion];
-    questionEl.textContent = q.question;
-    optionsEl.innerHTML = "";
-    q.options.forEach(option => {
-        const label = document.createElement("label");
-        label.classList.add("option");
-        const input = document.createElement("input");
-        input.type = "radio";
-        input.name = "option";
-        input.value = option;
-        label.appendChild(input);
-        label.appendChild(document.createTextNode(option));
-        optionsEl.appendChild(label);
-    });
-    updateProgress();
-    startTimer();
+        resetTimer();
+        const q = shuffledQuiz[currentQuestion];
+        questionEl.textContent = q.question;
+        optionsEl.innerHTML = "";
+        q.options.forEach(option => {
+            const label = document.createElement("label");
+            label.classList.add("option");
+            const input = document.createElement("input");
+            input.type = "radio";
+            input.name = "option";
+            input.value = option;
+            label.appendChild(input);
+            label.appendChild(document.createTextNode(option));
+            optionsEl.appendChild(label);
+        });
+        updateProgress();
+        startTimer();
     }
 
     function startTimer() {
-    timeLeft = 10;
-    timerEl.textContent = timeLeft;
-    timer = setInterval(() => {
-        timeLeft--;
+        timeLeft = 10;
         timerEl.textContent = timeLeft;
-        if (timeLeft <= 0) {
-        clearInterval(timer);
-        autoNext();
-        }
-    }, 1000);
+        timer = setInterval(() => {
+            timeLeft--;
+            timerEl.textContent = timeLeft;
+            if (timeLeft <= 0) {
+                clearInterval(timer);
+                autoNext();
+            }
+        }, 1000);
     }
 
     function resetTimer() {
-    clearInterval(timer);
-    timerEl.textContent = timeLeft;
+        clearInterval(timer);
+        timerEl.textContent = timeLeft;
     }
 
     function autoNext() {
-    checkAnswer();
-    currentQuestion++;
-    if (currentQuestion < shuffledQuiz.length) {
-        loadQuestion();
-    } else {
-        showResult();
-    }
+        checkAnswer();
+        currentQuestion++;
+        if (currentQuestion < shuffledQuiz.length) {
+            loadQuestion();
+        } else {
+            showResult();
+        }
     }
 
     nextBtn.addEventListener("click", () => {
-    if (!document.querySelector('input[name="option"]:checked')) {
-        alert("Please select an option.");
-        return;
-    }
-    checkAnswer();
-    currentQuestion++;
-    if (currentQuestion < shuffledQuiz.length) {
-        loadQuestion();
-    } else {
-        showResult();
-    }
+        if (!document.querySelector('input[name="option"]:checked')) {
+            alert("Please select an option.");
+            return;
+        }
+        checkAnswer();
+        currentQuestion++;
+        if (currentQuestion < shuffledQuiz.length) {
+            loadQuestion();
+        } else {
+            showResult();
+        }
     });
 
     function checkAnswer() {
-    const selected = document.querySelector('input[name="option"]:checked');
-    if (selected && selected.value === shuffledQuiz[currentQuestion].answer) {
-        score++;
-    }
+        const selected = document.querySelector('input[name="option"]:checked');
+        if (selected && selected.value === shuffledQuiz[currentQuestion].answer) {
+            score++;
+        }
     }
 
     function generateComment(score, total) {
-    const percent = (score / total) * 100;
-    if (percent === 100) {
-        return "You too much! You missed your calling, you should be a Professor. Go for it! 🎉";
-    } else if (percent >= 80) {
-        return "Well done o! One SJ Abed rice on the way. 👏";
-    } else if (percent >= 60) {
-        return "Let my people go. No worry, make we finish the matter for Kosini 👍";
-    } else if (percent >= 40) {
-        return "Please return the allowee! We no gree. You can do better.  💪";        
-    } else if (percent >= 20) {
-        return "Just take the test again. No long story. Make we no report you to Shell management. 📚";
-    } else {
-        return "AChai diaris God o! Please return the certificate. No stories, just return am. 🌱";
-    }
+        const percent = (score / total) * 100;
+        if (percent === 100) {
+            return "You too much! You missed your calling, you should be a Professor. Go for it! 🎉";
+        } else if (percent >= 80) {
+            return "Well done o! One SJ Abed rice on the way. 👏";
+        } else if (percent >= 60) {
+            return "Let my people go. No worry, make we finish the matter for Kosini 👍";
+        } else if (percent >= 40) {
+            return "Please return the allowee! We no gree. You can do better.  💪";        
+        } else if (percent >= 20) {
+            return "Just take the test again. No long story. Make we no report you to Shell management. 📚";
+        } else {
+            return "AChai diaris God o! Please return the certificate. No stories, just return am. 🌱";
+        }
     }
 
     function showResult() {
-    questionEl.style.display = "none";
-    optionsEl.style.display = "none";
-    nextBtn.style.display = "none";
-    timerEl.style.display = "none";
-    progressEl.style.width = "100%";
-    const comment = generateComment(score, shuffledQuiz.length);
-    resultEl.innerHTML = `You scored ${score} out of ${shuffledQuiz.length}.<br>${comment}`;
+        questionEl.style.display = "none";
+        optionsEl.style.display = "none";
+        nextBtn.style.display = "none";
+        timerEl.style.display = "none";
+        progressEl.style.width = "100%";
+        const comment = generateComment(score, shuffledQuiz.length);
+        resultEl.innerHTML = `You scored ${score} out of ${shuffledQuiz.length}.<br>${comment}`;
     }
 
     function updateProgress() {
-    const progressPercent = ((currentQuestion) / shuffledQuiz.length) * 100;
-    progressEl.style.width = `${progressPercent}%`;
+        const progressPercent = ((currentQuestion) / shuffledQuiz.length) * 100;
+        progressEl.style.width = `${progressPercent}%`;
     }
-
-    // Load first question
-    loadQuestion();
 });

@@ -1,7 +1,13 @@
+<!-- templates/quiz/quiz.html -->
 {% extends 'base.html' %}
 {% load static %}
 
 {% block title %}SITP Reunion Quiz{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/quiz.css' %}">
+{% endblock %}
 
 {% block javascript %}
     <script src="{% static 'js/quiz.js' %}"></script>
@@ -9,7 +15,21 @@
 
 {% block content %}
     <section class="quiz-section">
-        <div class="quiz-container">
+        <div id="start-screen" class="start-screen">
+            <h2>SITP Batch 4 Reunion Quiz</h2>
+            <div class="instructions">
+                <p>Test your knowledge of our SITP Batch 4 memories!</p>
+                <ul>
+                    <li>You'll have <strong>10 seconds</strong> to answer each question</li>
+                    <li>There are <strong>16</strong> questions in total</li>
+                    <li>Try to answer as many as you can correctly</li>
+                    <li>Have fun and reminisce!</li>
+                </ul>
+            </div>
+            <button id="start-btn" class="start-btn">Start Quiz</button>
+        </div>
+        
+        <div id="quiz-container" class="quiz-container" style="display: none;">
             <div class="timer" id="timer">10</div>
             <div class="progress-bar">
                 <div class="progress" id="progress"></div>
