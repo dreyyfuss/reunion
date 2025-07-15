@@ -5,8 +5,14 @@
 
 {% block content %}
     <section class="photo-detail-section">
+        <!-- Add Back to Gallery button here at the top -->
+        <div class="back-to-gallery-top">
+            <a href="{% url 'gallery' %}" class="btn back-btn">
+                &larr; Back to Gallery
+            </a>
+        </div>
+
         <div class="photo-container">
-            {% comment %} <h2>{{ photo.caption }}</h2> {% endcomment %}
             {% if photo.user %}
                 <span class="photo-author">Uploaded by {{ photo.user.full_name|default:photo.user.email }}</span>
             {% endif %}

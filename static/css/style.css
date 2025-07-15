@@ -820,3 +820,38 @@ footer {
     background-color: #718096;
     border-left: 4px solid #4a5568;
 }
+
+/* Back to Gallery button styles - top version */
+.back-to-gallery-top {
+    margin-bottom: 2rem;
+    text-align: left;
+}
+
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary-color);
+    color: var(--light-gray);
+    padding: 0.6rem 1.2rem;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: all 0.3s;
+    text-transform: none;
+    letter-spacing: normal;
+    border: 1px solid #ddd;
+    font-size: 0.9rem;
+}
+
+.back-btn:hover {
+    background-color: var(--dark-gray);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+}
+
+.back-btn:before {
+    content: "";
+    display: inline-block;
+    margin-right: 8px;
+}
