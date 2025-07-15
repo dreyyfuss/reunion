@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Event Gallery{% endblock %}
+{% block title %}SITP Batch 4 Gallery{% endblock %}
 
 {% block content %}
 <section class="gallery-section">
     <div class="gallery-header">
-        <h2 class="gallery-title">Event Gallery</h2>
+        <h2 class="gallery-title">SITP Batch 4 Gallery</h2>
         <p class="gallery-subtitle">Relive the memories through our shared photos. Please click a photo below for more details and comments.</p>
         {% if user.is_authenticated %}
             <a href="{% url 'upload_photo' %}" class="upload-btn">Upload Photo</a>
