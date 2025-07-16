@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}SITP Batch 4 Memories{% endblock %}
+{% block title %}SITP Memories{% endblock %}
 
 {% block content %}
 <section class="gallery-section">
     <div class="gallery-header">
-        <h2 class="gallery-title">SITP Batch 4 Memories</h2>
+        <h2 class="gallery-title">SITP Memories</h2>
         <p class="gallery-subtitle">Relive the memories through our shared photos. Please click a photo below for more details and comments.</p>
         {% if user.is_authenticated %}
             <a href="{% url 'upload_photo' %}" class="upload-btn">Share a Memory</a>
