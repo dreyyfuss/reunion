@@ -8,13 +8,15 @@
         <h2>Registration</h2>
         <p class="subtitle">Please fill in the form to register for the reunion.</p>
 
+        <p class="required-note">* Indicates required field</p>
+
         {% if messages %}
             {% for message in messages %}
                 <p class="message {{ message.tags }}">{{ message }}</p>
             {% endfor %}
         {% endif %}
 
-        <form method="post" class="registration-form">
+        <form method="post" class="registration-form" novalidate>
             {% csrf_token %}
 
             <hr style="margin: 2rem 0;">
@@ -22,16 +24,31 @@
             <div class="form-group">
                 <label for="email">Email *</label>
                 {{ user_form.email }}
+                {% if user_form.email.errors %}
+                    <div class="error-message">
+                        {{ user_form.email.errors }}
+                    </div>
+                {% endif %}
             </div>
 
             <div class="form-group">
                 <label for="password1">Password *</label>
                 {{ user_form.password1 }}
+                {% if user_form.password1.errors %}
+                    <div class="error-message">
+                        {{ user_form.password1.errors }}
+                    </div>
+                {% endif %}
             </div>
 
             <div class="form-group">
                 <label for="password2">Confirm Password *</label>
                 {{ user_form.password2 }}
+                {% if user_form.password2.errors %}
+                    <div class="error-message">
+                        {{ user_form.password2.errors }}
+                    </div>
+                {% endif %}
             </div>
 
             <hr style="margin: 2rem 0;">
@@ -40,46 +57,86 @@
             <div class="form-group">
                 <label for="first_name">First Name *</label>
                 {{ reg_form.first_name }}
+                {% if reg_form.first_name.errors %}
+                    <div class="error-message">
+                        {{ reg_form.first_name.errors }}
+                    </div>
+                {% endif %}
             </div>
 
             <div class="form-group">
                 <label for="last_name">Last Name *</label>
                 {{ reg_form.last_name }}
+                {% if reg_form.last_name.errors %}
+                    <div class="error-message">
+                        {{ reg_form.last_name.errors }}
+                    </div>
+                {% endif %}
             </div>
 
             <div class="form-group">
-                <label for="phone">Phone Number (eg. +234 ** **** ****)</label>
+                <label for="phone">Phone Number (eg. +234 ** **** ****) *</label>
                 {{ reg_form.phone }}
+                {% if reg_form.phone.errors %}
+                    <div class="error-message">
+                        {{ reg_form.phone.errors }}
+                    </div>
+                {% endif %}
             </div>
 
             <hr style="margin: 2rem 0;">
             <h3>Address</h3>
 
             <div class="form-group">
-                <label for="address_line_1">Street Address (Include Postcode/Zipcode)</label>
+                <label for="address_line_1">Street Address (Include Postcode/Zipcode) *</label>
                 {{ reg_form.address_line_1 }}
+                {% if reg_form.address_line_1.errors %}
+                    <div class="error-message">
+                        {{ reg_form.address_line_1.errors }}
+                    </div>
+                {% endif %}
             </div>
 
             <div class="form-group">
-                <label for="city">City</label>
+                <label for="city">City *</label>
                 {{ reg_form.city }}
+                {% if reg_form.city.errors %}
+                    <div class="error-message">
+                        {{ reg_form.city.errors }}
+                    </div>
+                {% endif %}
             </div>
 
             <div class="form-group">
-                <label for="state">State / Province / Region</label>
+                <label for="state">State / Province / Region *</label>
                 {{ reg_form.state }}
+                {% if reg_form.state.errors %}
+                    <div class="error-message">
+                        {{ reg_form.state.errors }}
+                    </div>
+                {% endif %}
             </div>
 
             <div class="form-group">
-                <label for="country">Country</label>
+                <label for="country">Country *</label>
                 {{ reg_form.country }}
+                {% if reg_form.country.errors %}
+                    <div class="error-message">
+                        {{ reg_form.country.errors }}
+                    </div>
+                {% endif %}
             </div>
 
             <hr style="margin: 2rem 0;">
-            <h3>T- SHIRT</h3>
+            <h3>T-SHIRT</h3>
             <div class="form-group">
                 <label for="shirt_size">Select Your T-Shirt Size *</label>
                 {{ reg_form.shirt_size }}
+                {% if reg_form.shirt_size.errors %}
+                    <div class="error-message">
+                        {{ reg_form.shirt_size.errors }}
+                    </div>
+                {% endif %}
             </div>
 
             <hr style="margin: 2rem 0;">
@@ -87,23 +144,44 @@
             <p>Please enter up to 4 URLs for gifts you would like to receive. Please note that value of gifts should not exceed £20, $30, CAD 40, AUD 40, ₦50k in the respective currency</p>
 
             <div class="form-group">
-                <label for="gift1">Gift 1 (website link)</label>
+                <label for="gift1">Gift 1 (website link) *</label>
                 {{ reg_form.gift1 }}
+                {% if reg_form.gift1.errors %}
+                    <div class="error-message">
+                        {{ reg_form.gift1.errors }}
+                    </div>
+                {% endif %}
+                <small class="form-help">Please enter a valid URL starting with http:// or https://</small>
             </div>
 
             <div class="form-group">
                 <label for="gift2">Gift 2 (website link)</label>
                 {{ reg_form.gift2 }}
+                {% if reg_form.gift2.errors %}
+                    <div class="error-message">
+                        {{ reg_form.gift2.errors }}
+                    </div>
+                {% endif %}
             </div>
 
             <div class="form-group">
                 <label for="gift3">Gift 3 (website link)</label>
                 {{ reg_form.gift3 }}
+                {% if reg_form.gift3.errors %}
+                    <div class="error-message">
+                        {{ reg_form.gift3.errors }}
+                    </div>
+                {% endif %}
             </div>
 
             <div class="form-group">
                 <label for="gift4">Gift 4 (website link)</label>
                 {{ reg_form.gift4 }}
+                {% if reg_form.gift4.errors %}
+                    <div class="error-message">
+                        {{ reg_form.gift4.errors }}
+                    </div>
+                {% endif %}
             </div>
 
             <hr style="margin: 2rem 0;">
@@ -113,15 +191,26 @@
             <div class="form-group">
                 <label for="donation_currency">Currency</label>
                 {{ reg_form.donation_currency }}
+                {% if reg_form.donation_currency.errors %}
+                    <div class="error-message">
+                        {{ reg_form.donation_currency.errors }}
+                    </div>
+                {% endif %}
             </div>
 
             <div class="form-group">
                 <label for="donation_amount">Amount</label>
                 {{ reg_form.donation_amount }}
+                {% if reg_form.donation_amount.errors %}
+                    <div class="error-message">
+                        {{ reg_form.donation_amount.errors }}
+                    </div>
+                {% endif %}
             </div>
 
             <div class="form-group">
                 <button type="submit" class="submit-btn">Submit</button>
+                <a href="{% url 'home' %}" class="cancel-btn">Cancel</a>
             </div>
         </form>
     </div>

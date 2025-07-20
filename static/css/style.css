@@ -1027,3 +1027,31 @@ footer {
         height: 120px;
     }
 }
+
+
+/* Style for required field indicator */
+.required-note {
+    color: #e53e3e;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-weight: 500;
+}
+
+/* Style for form help text */
+.form-help {
+    display: block;
+    margin-top: 0.25rem;
+    color: #718096;
+    font-size: 0.85rem;
+}
+
+.error-message {
+    color: #e53e3e;
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+}
+
+/* Highlight invalid fields */
+input:invalid, select:invalid, textarea:invalid {
+    border-color: #e53e3e;
+}

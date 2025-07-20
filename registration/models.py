@@ -21,7 +21,7 @@ class Registration(models.Model):
     state = models.CharField(max_length=100, blank=True, null=True)
     country = CountryField(null=True, blank=True)
     shirt_size = models.CharField(max_length=10, choices=SHIRT_SIZES, null=False, default='M')
-    gift1 = models.URLField(null=True, blank=True)
+    gift1 = models.URLField(null=False, blank=False)
     gift2 = models.URLField(null=True, blank=True)
     gift3 = models.URLField(null=True, blank=True)
     gift4 = models.URLField(null=True, blank=True)
