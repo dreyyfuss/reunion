@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'registration',
     'gallery',
     'quiz',
+    'tributes',
 ]
 
 MIDDLEWARE = [

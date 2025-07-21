@@ -26,6 +26,7 @@ urlpatterns = [
     path('', include("gallery.urls")),
     path('', include("users.urls") ),
     path('', include("quiz.urls")),
+    path('', include('tributes.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # This is for development only - serves static/media files

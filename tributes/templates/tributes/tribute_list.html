@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Tributes{% endblock %}
+
+{% block content %}
+<section class="tribute-section">
+    <div class="tribute-header">
+        <div class="tribute-header-content">
+            <h1>In Loving Memory</h1>
+            <p class="subtitle">Share your thoughts and memories of our departed friends</p>
+        </div>
+        {% if user.is_authenticated %}
+        <div class="tribute-cta">
+            <a href="{% url 'create_tribute' %}" class="btn btn-tribute">
+                <i class="fas fa-pen"></i> Leave a Tribute
+            </a>
+        </div>
+        {% else %}
+        <div class="tribute-login-prompt">
+            <p>Please <a href="{% url 'login' %}?next={% url 'create_tribute' %}">login</a> to leave a tribute</p>
+        </div>
+        {% endif %}
+    </div>
+
+    <div class="tribute-list">
+        {% for tribute in tributes %}
+        <div class="tribute-card">
+            <div class="tribute-card-header">
+                <div class="tribute-icon">
+                    <i class="fa-solid fa-dove"></i>
+                </div>
+                <div class="author-info">
+                    <div class="author-name">{{ tribute.author.first_name }} {{ tribute.author.last_name }}</div>
+                    <div class="tribute-date">{{ tribute.formatted_date }}</div>
+                </div>
+            </div>
+            
+            <div class="tribute-content">
+                <h3>Tribute to {{ tribute.departed }}</h3>
+                <p>{{ tribute.content }}</p>
+            </div>
+        </div>
+        {% empty %}
+        <div class="empty-tributes">
+            <p>No tributes yet. Be the first to share your memories.</p>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

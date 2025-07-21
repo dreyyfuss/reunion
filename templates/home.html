@@ -38,6 +38,20 @@
         </div>
     </section>
 
+    <!-- Remembrance Section -->
+    <section class="remembrance-section">
+        <div class="remembrance-container">
+            <h2 class="remembrance-subtitle">WE WILL ALWAYS REMEMBER</h2>
+            <h1 class="remembrance-title">GONE, NOT FORGOTTEN</h1>
+            <p class="remembrance-text">
+                We remember our members, Deji and Yemi, who are no longer with us. We honour their friendship and love.
+            </p>
+            <a href="{% if user.is_authenticated %}{% url 'create_tribute' %}{% else %}{% url 'login' %}?next={% url 'create_tribute' %}{% endif %}" class="btn" style="margin-top: 2rem;">
+                Share Your Tribute
+            </a>
+        </div>
+    </section>
+
     <!-- New Quiz Call to Action Section -->
     <section class="quiz-cta-section">
         <div class="quiz-cta-container">
@@ -122,17 +136,6 @@
                     <h3 class="organizer-name">Jolomi</h3>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Remembrance Section -->
-    <section class="remembrance-section">
-        <div class="remembrance-container">
-            <h2 class="remembrance-subtitle">WE WILL ALWAYS REMEMBER</h2>
-            <h1 class="remembrance-title">GONE, NOT FORGOTTEN</h1>
-            <p class="remembrance-text">
-                We remember our members, Deji and Yemi, who are no longer with us. We honour their friendship and love.
-            </p>
         </div>
     </section>
 

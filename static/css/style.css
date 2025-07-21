@@ -1055,3 +1055,285 @@ footer {
 input:invalid, select:invalid, textarea:invalid {
     border-color: #e53e3e;
 }
+
+/* Tribute Section */
+.tribute-section {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+}
+
+.tribute-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.tribute-header h1 {
+    color: var(--primary-color);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.tribute-form-container {
+    background-color: white;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 3rem;
+}
+
+.tribute-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.tribute-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.tribute-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    position: relative;
+    border-left: 4px solid var(--primary-color);
+}
+
+.tribute-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.author-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.author-name {
+    font-weight: 600;
+    color: var(--primary-color);
+    font-size: 1.1rem;
+}
+
+.tribute-date {
+    color: var(--dark-gray);
+    font-size: 0.9rem;
+}
+
+.tribute-content h3 {
+    color: #333;
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+}
+
+.tribute-content p {
+    line-height: 1.6;
+    color: #555;
+}
+
+.tribute-footer {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.share-btn {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    cursor: pointer;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.share-btn:hover {
+    text-decoration: underline;
+}
+
+.empty-tributes {
+    text-align: center;
+    padding: 3rem;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    color: var(--dark-gray);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .tribute-card {
+        padding: 1.5rem;
+    }
+    
+    .tribute-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+}
+
+/* Tribute Card Header Styles */
+.tribute-card-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.tribute-icon {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(203, 83, 30, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+}
+
+.tribute-icon i {
+    /* Adjust icon positioning if needed */
+    margin-top: 2px;
+}
+
+/* Alternative dove icon style */
+/* .tribute-icon i.fa-dove {
+    color: #5d8aa8;
+    font-size: 1.1rem;
+} */
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .tribute-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+    }
+}
+
+
+/* Footer Sticky Fix */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.page-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.content-wrap {
+    flex: 1;
+}
+
+/* Existing footer styles - update them to: */
+footer {
+    background-color: var(--light-gray);
+    text-align: center;
+    padding: 2rem;
+    margin-top: auto; /* This pushes the footer to the bottom */
+}
+
+/* For pages with very short content */
+.tribute-section, .tribute-form-container {
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.tribute-list, .tribute-form {
+    flex: 1;
+}
+
+/* Tribute Header Styles */
+.tribute-header {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background-color: rgba(203, 83, 30, 0.05);
+    border-radius: 10px;
+    text-align: center;
+}
+
+.tribute-header-content {
+    margin-bottom: 0.5rem;
+}
+
+.tribute-header h1 {
+    color: var(--primary-color);
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+}
+
+.tribute-header .subtitle {
+    font-size: 1.1rem;
+    color: var(--dark-gray);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.tribute-cta, .tribute-login-prompt {
+    margin-top: 0.5rem;
+}
+
+.btn-tribute {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.8rem 1.8rem;
+    border-radius: 50px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.btn-tribute:hover {
+    background-color: #b5451a;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-tribute i {
+    font-size: 0.9rem;
+}
+
+.tribute-login-prompt p {
+    color: var(--dark-gray);
+}
+
+.tribute-login-prompt a {
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .tribute-header {
+        padding: 1.5rem;
+        gap: 1.5rem;
+    }
+    
+    .tribute-header h1 {
+        font-size: 2rem;
+    }
+    
+    .tribute-header .subtitle {
+        font-size: 1rem;
+    }
+}
