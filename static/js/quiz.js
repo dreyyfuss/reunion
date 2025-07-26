@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         {
           question: "When did SITP 4 start?",
-          options: ["Jun 2020", "May 2020", "Dec 2020", "Jan 2021"],
+          options: ["Jun 2000", "May 2000", "Dec 2000", "Jan 2001"],
           answer: "Jun 2020"
         },   
         {
