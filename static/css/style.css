@@ -1337,3 +1337,75 @@ footer {
         font-size: 1rem;
     }
 }
+
+/* Profile Page */
+.profile-section {
+    padding: 4rem 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.profile-container {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.profile-container h2 {
+    padding: 1.5rem;
+    background-color: var(--primary-color);
+    color: white;
+    margin: 0;
+}
+
+.profile-tabs {
+    display: flex;
+    border-bottom: 1px solid #eee;
+}
+
+.profile-tab {
+    padding: 1rem 1.5rem;
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s;
+}
+
+.profile-tab:hover {
+    color: var(--primary-color);
+    background-color: rgba(203, 83, 30, 0.05);
+}
+
+.profile-tab.active {
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+}
+
+.profile-content {
+    padding: 2rem;
+}
+
+.profile-form,
+.password-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .profile-tabs {
+        flex-direction: column;
+    }
+    
+    .profile-tab {
+        border-bottom: 1px solid #eee;
+        border-left: 3px solid transparent;
+    }
+    
+    .profile-tab.active {
+        border-left-color: var(--primary-color);
+        border-bottom-color: #eee;
+    }
+}

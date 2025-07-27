@@ -34,7 +34,7 @@ class UserSignupForm(forms.ModelForm):
 class RegistrationForm(forms.ModelForm):
     class Meta:
         model = Registration
-        fields = '__all__'  # Or list all fields explicitly
+        exclude = ['user', 'email']
         widgets = {
             'country': CountrySelectWidget(),
         }
