@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login, logout, update_session_auth
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.forms import PasswordChangeForm
-from registration.forms import RegistrationForm
+from .forms import ProfileForm
 from registration.models import Registration
 
 def login_view(request):
@@ -37,7 +37,7 @@ def profile_view(request):
         registration = None
 
     if request.method == 'POST':
-        form = RegistrationForm(request.POST, instance=registration)
+        form = ProfileForm(request.POST, instance=registration)
         if form.is_valid():
             registration = form.save(commit=False)
             registration.user = request.user
@@ -46,7 +46,7 @@ def profile_view(request):
             messages.success(request, "Your profile has been updated!")
             return redirect('profile')
     else:
-        form = RegistrationForm(instance=registration)
+        form = ProfileForm(instance=registration)
 
     return render(request, 'users/profile.html', {
         'form': form,

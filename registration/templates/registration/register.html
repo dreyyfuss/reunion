@@ -208,6 +208,19 @@
                 {% endif %}
             </div>
 
+            <hr style="margin: 2rem 0;">
+            <h3>Access Code</h3>
+
+            <div class="form-group">
+                <label for="registration_code">Registration Code *</label>
+                {{ reg_form.registration_code }}
+                {% if reg_form.registration_code.errors %}
+                    <div class="error-message">
+                        {{ reg_form.registration_code.errors }}
+                    </div>
+                {% endif %}
+            </div>
+
             <div class="form-group">
                 <button type="submit" class="submit-btn">Submit</button>
                 <a href="{% url 'home' %}" class="cancel-btn">Cancel</a>

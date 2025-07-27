@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Registration
+from .models import Registration, RegistrationCode
 
 @admin.register(Registration)
 class RegistrationAdmin(admin.ModelAdmin):
@@ -29,3 +29,8 @@ class RegistrationAdmin(admin.ModelAdmin):
         }),
     )
     
+@admin.register(RegistrationCode)
+class RegistrationCodeAdmin(admin.ModelAdmin):
+    list_display = ('code', 'is_active', 'single_use')
+    list_filter = ('is_active', 'single_use')
+    search_fields = ('code',)

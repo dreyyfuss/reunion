@@ -7,6 +7,16 @@ from .choices import SHIRT_SIZES, CURRENCY_CHOICES
 
 User = get_user_model()
 
+
+class RegistrationCode(models.Model):
+    code = models.CharField(max_length=100, unique=True)
+    is_active = models.BooleanField(default=True)  # optionally allow deactivation
+    single_use = models.BooleanField(default=False)  # if True, remove after use
+
+    def __str__(self):
+        return self.code
+
+
 class Registration(models.Model):
     """
     Model to store registration information for the reunion.

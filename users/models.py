@@ -9,7 +9,7 @@ class CustomUserManager(BaseUserManager):
             raise ValueError("The Email field must be set")
         
         if not extra_fields.get("is_superuser"):
-            extra_fields["is_active"] = False
+            # extra_fields["is_active"] = False
             extra_fields["is_staff"] = False  # default for regular users
 
         email = self.normalize_email(email)

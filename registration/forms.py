@@ -4,6 +4,8 @@ from .models import Registration
 from .choices import SHIRT_SIZES, CURRENCY_CHOICES
 from django_countries.fields import CountryField
 from django_countries.widgets import CountrySelectWidget
+from .models import RegistrationCode  # import inside to avoid circular imports
+
 
 User = get_user_model()
 
@@ -32,6 +34,11 @@ class UserSignupForm(forms.ModelForm):
 
 
 class RegistrationForm(forms.ModelForm):
+    registration_code = forms.CharField(
+        label="Registration Code *", 
+        required=True,
+        help_text="Please enter the registration code shared with you."
+    )
     class Meta:
         model = Registration
         exclude = ['user', 'email']
@@ -58,3 +65,14 @@ class RegistrationForm(forms.ModelForm):
         self.fields['gift4'].required = False
         self.fields['donation_currency'].required = False
         self.fields['donation_amount'].required = False
+
+    def clean_registration_code(self):
+        code = self.cleaned_data['registration_code']
+        
+        try:
+            reg_code = RegistrationCode.objects.get(code=code, is_active=True)
+            self.cleaned_data['reg_code_obj'] = reg_code  # save for use in view
+        except RegistrationCode.DoesNotExist:
+            raise forms.ValidationError("Invalid or inactive registration code.")
+        
+        return code
