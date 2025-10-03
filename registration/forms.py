@@ -57,7 +57,7 @@ class RegistrationForm(forms.ModelForm):
         self.fields['state'].required = True
         self.fields['country'].required = True
         self.fields['shirt_size'].required = True
-        self.fields['gift1'].required = True
+        self.fields['gift1'].required = False
         
         # Set required=False for optional fields
         self.fields['gift2'].required = False
@@ -65,6 +65,9 @@ class RegistrationForm(forms.ModelForm):
         self.fields['gift4'].required = False
         self.fields['donation_currency'].required = False
         self.fields['donation_amount'].required = False
+
+        # ✅ Set default currency to NGN
+        self.fields['donation_currency'].initial = 'NGN'
 
     def clean_registration_code(self):
         code = self.cleaned_data['registration_code']
