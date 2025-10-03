@@ -145,7 +145,8 @@ nav {
 .countdown-section {
     text-align: center;
     padding: 4rem 2rem;
-    background-color: var(--light-gray);
+    /* background-color: var(--light-gray); */
+    background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url('../images/countdown_bg.png');
 }
 
 .countdown-section h2 {
@@ -1407,5 +1408,340 @@ footer {
     .profile-tab.active {
         border-left-color: var(--primary-color);
         border-bottom-color: #eee;
+    }
+}
+
+
+/* Home Page Section Height Adjustments */
+.banner-section,
+.countdown-section,
+.remembrance-section,
+.quiz-cta-section,
+.organizers-section {
+    min-height: calc(100vh - 80px); /* Full viewport minus nav height on large screens */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Specific adjustments for each section */
+.banner-section {
+    min-height: calc(100vh - 80px);
+    padding: 4rem 2rem;
+}
+
+.countdown-section {
+    min-height: calc(100vh - 80px);
+    padding: 4rem 2rem;
+}
+
+.remembrance-section {
+    min-height: calc(100vh - 80px);
+    padding: 5rem 2rem;
+}
+
+.quiz-cta-section {
+    min-height: calc(100vh - 80px);
+    padding: 6rem 2rem;
+}
+
+.organizers-section {
+    min-height: calc(100vh - 80px);
+    padding: 4rem 2rem;
+}
+
+/* Mobile screens - full viewport height */
+@media (max-width: 768px) {
+    .banner-section,
+    .countdown-section,
+    .remembrance-section,
+    .quiz-cta-section,
+    .organizers-section {
+        min-height: 100vh;
+        padding: 3rem 1.5rem;
+    }
+    
+    /* Adjust padding for better mobile spacing */
+    .banner-section {
+        padding: 3rem 1.5rem;
+    }
+    
+    .countdown-section {
+        padding: 3rem 1.5rem;
+    }
+    
+    .remembrance-section {
+        padding: 4rem 1.5rem;
+    }
+    
+    .quiz-cta-section {
+        padding: 4rem 1.5rem;
+    }
+    
+    .organizers-section {
+        padding: 3rem 1.5rem;
+    }
+}
+
+/* Extra small mobile devices */
+@media (max-width: 480px) {
+    .banner-section,
+    .countdown-section,
+    .remembrance-section,
+    .quiz-cta-section,
+    .organizers-section {
+        min-height: 100vh;
+        padding: 2rem 1rem;
+    }
+    
+    .banner-content h1 {
+        font-size: 2rem;
+    }
+    
+    .banner-content p {
+        font-size: 1rem;
+    }
+}
+
+/* Ensure content within sections is properly centered */
+.banner-content,
+.countdown-container,
+.remembrance-container,
+.quiz-cta-container,
+.organizers-container {
+    width: 100%;
+}
+
+/* Adjust the secondary banner specifically */
+.banner-section.secondary-banner {
+    min-height: calc(100vh - 80px);
+}
+
+@media (max-width: 768px) {
+    .banner-section.secondary-banner {
+        min-height: 100vh;
+    }
+}
+
+
+/* Typography Improvements */
+.banner-content h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.banner-content h2 {
+    font-size: 3rem;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.banner-content p {
+    font-size: 1.4rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.countdown-section h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 2.5rem;
+}
+
+.remembrance-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+}
+
+.remembrance-subtitle {
+    font-size: 1.2rem;
+    letter-spacing: 3px;
+}
+
+.remembrance-text {
+    font-size: 1.3rem;
+    line-height: 1.7;
+}
+
+.quiz-cta-section h2 {
+    font-size: 2.8rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+.quiz-cta-section p {
+    font-size: 1.3rem;
+    line-height: 1.6;
+}
+
+.organizers-title {
+    font-size: 2.8rem;
+    font-weight: 600;
+}
+
+.organizers-subtitle {
+    font-size: 1.2rem;
+}
+
+/* Better Font Family */
+body {
+    font-family: 'Inter', 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Import Inter font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Alternative elegant font option - Uncomment if you prefer this */
+/*
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+body {
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+}
+
+.banner-content h1,
+.banner-content h2,
+.remembrance-title,
+.organizers-title {
+    font-family: 'Playfair Display', serif;
+}
+*/
+
+/* Mobile Responsive Typography */
+@media (max-width: 768px) {
+    .banner-content h1 {
+        font-size: 2.8rem;
+    }
+    
+    .banner-content h2 {
+        font-size: 2.2rem;
+    }
+    
+    .banner-content p {
+        font-size: 1.2rem;
+    }
+    
+    .countdown-section h2 {
+        font-size: 2rem;
+    }
+    
+    .remembrance-title {
+        font-size: 2.5rem;
+    }
+    
+    .remembrance-text {
+        font-size: 1.1rem;
+    }
+    
+    .quiz-cta-section h2 {
+        font-size: 2.2rem;
+    }
+    
+    .quiz-cta-section p {
+        font-size: 1.1rem;
+    }
+    
+    .organizers-title {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .banner-content h1 {
+        font-size: 2.2rem;
+    }
+    
+    .banner-content h2 {
+        font-size: 1.8rem;
+    }
+    
+    .banner-content p {
+        font-size: 1.1rem;
+    }
+    
+    .countdown-section h2 {
+        font-size: 1.8rem;
+    }
+    
+    .remembrance-title {
+        font-size: 2rem;
+    }
+    
+    .remembrance-subtitle {
+        font-size: 1rem;
+    }
+    
+    .remembrance-text {
+        font-size: 1rem;
+    }
+}
+
+
+/* Larger H2 Elements */
+.banner-content h2 {
+    font-size: 3.5rem;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.countdown-section h2 {
+    font-size: 3rem;
+    font-weight: 600;
+    margin-bottom: 2.5rem;
+}
+
+.quiz-cta-section h2 {
+    font-size: 3.2rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+.organizers-title {
+    font-size: 3.2rem;
+    font-weight: 600;
+}
+
+/* Mobile Responsive for Larger H2s */
+@media (max-width: 768px) {
+    .banner-content h2 {
+        font-size: 2.5rem;
+    }
+    
+    .countdown-section h2 {
+        font-size: 2.3rem;
+    }
+    
+    .quiz-cta-section h2 {
+        font-size: 2.3rem;
+    }
+    
+    .organizers-title {
+        font-size: 2.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .banner-content h2 {
+        font-size: 2rem;
+    }
+    
+    .countdown-section h2 {
+        font-size: 1.9rem;
+    }
+    
+    .quiz-cta-section h2 {
+        font-size: 1.9rem;
+    }
+    
+    .organizers-title {
+        font-size: 1.9rem;
     }
 }
