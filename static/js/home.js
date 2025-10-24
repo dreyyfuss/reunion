@@ -1,7 +1,7 @@
 // Countdown Timer
 function updateCountdown() {
     // Set the event date (YYYY, MM (0-11), DD, HH, MM, SS)
-    const eventDate = new Date(2025, 10, 1, 18, 0, 0).getTime();
+    const eventDate = new Date(Date.UTC(2025, 10, 15, 20, 0, 0)).getTime();
     const now = new Date().getTime();
     const distance = eventDate - now;
 
